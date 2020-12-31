@@ -19,7 +19,7 @@ function scrollFunction() {
     getContent();
 }
 
-var fadeInPercent = 75; // adjust when images should appear on screen (100 = as soon as they're on screen; 0 = top of document) 
+var fadeInPercent = 75;
 function getContent() {
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
@@ -85,7 +85,7 @@ $(window).on("load", function () {
 });
 
 function closeProject() {
-    window.history.pushState("", "", "/as-onepager/");
+    window.history.pushState("", "", "/one-page-portfolio/");
     document.getElementById(saveScreen).style.display = 'none';
     scrollBtn.style.display = 'none';
 
@@ -149,10 +149,6 @@ function link(a, id) {
         $("#" + saveScreen).fadeIn(2000);
         getContent();
 
-        // setTimeout(function () {
-        //     fadeInPercent = 75;
-        // }, 2000);
-
     }, 2000);
 
     if (saveScreen !== "main") {
@@ -161,8 +157,7 @@ function link(a, id) {
         }, 3000);
     }
 
-    window.history.pushState("", "", "".concat('/as-onepager/' + saveScreen));
-    // window.history.pushState("", "", saveScreen); // USE THIS!!!!!!!
+    window.history.pushState("", "", "".concat('/one-page-portfolio/' + saveScreen));
 }
 
 function updateProjectUrl() {

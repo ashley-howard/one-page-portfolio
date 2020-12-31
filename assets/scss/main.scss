@@ -88,6 +88,11 @@ hr {
             &:active {
                 border-bottom: 1px solid $active-text;
             }
+
+            &.disabled {
+                color: $inactive-text;
+                border-bottom: 1px solid #e4e4e4;
+            }
         }
     }
 
