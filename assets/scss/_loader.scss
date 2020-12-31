@@ -1,0 +1,79 @@
+.loader-wrapper,
+.loader-wrapper-menu {
+    background: #fff;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: inherit;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 2s ease-out;
+}
+
+.loader-wrapper-menu {
+    display: none;
+}
+
+@media screen and (max-width: 810px) {
+
+    .loader-wrapper {
+        display: none;
+    }
+
+    .loader-wrapper-menu {
+        background: transparent;
+        left: 0;
+        display: flex;
+    }
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 100px auto;
+}
+
+.double-bounce {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 7px solid $active-text;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: sk-bounce 4s infinite ease-in-out;
+    animation: sk-bounce 4s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-bounce {
+
+    0%,
+    100% {
+        -webkit-transform: scale(0.3)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bounce {
+
+    0%,
+    100% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+    }
+
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}

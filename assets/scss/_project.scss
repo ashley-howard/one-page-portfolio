@@ -1,0 +1,381 @@
+@import 'loader';
+
+.project {
+    display: none;
+
+    &::before {
+        position: absolute;
+        content: "";
+        border-top: 1px solid #e4e4e4;
+        top: -1px;
+        width: 100%;
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        height: 117px;
+        width: 100%;
+        border-top: 1px solid #e4e4e4;
+        margin-top: 28px;
+    }
+}
+
+#scroll-up {
+    display: flex;
+    position: fixed;
+    opacity: 0;
+    transition: opacity 1s;
+    bottom: 32px;
+    right: 32px;
+    background: $bg-load;
+    padding: 5px;
+    border-radius: 34px;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px 0 rgba(85, 85, 85, 0.43);
+
+    @media screen and (max-width: 810px) {
+        display: none;
+    }
+
+    &.fade-in {
+        opacity: 1;
+    }
+
+    &.fade-out {
+        opacity: 0;
+    }
+
+    svg {
+        fill: $active-text;
+    }
+
+    &:hover {
+        background: $decor;
+    }
+
+    &:active {
+        background: $active-text;
+        box-shadow: none;
+
+        & svg {
+            fill: white;
+        }
+    }
+}
+
+.close {
+    margin: 49px 0 0 48px;
+    position: absolute;
+    display: none;
+    z-index: 1;
+}
+
+main {
+    margin-top: 80px;
+    padding-top: 16px;
+
+    &.expanding {
+        animation: expand 2s ease-in-out forwards;
+    }
+
+    @keyframes expand {
+        0% {
+            margin-top: 80px;
+        }
+
+        50% {
+            margin-top: 160px;
+        }
+
+        100% {
+            margin-top: 80px;
+        }
+    }
+
+    .text {
+        padding: 28px 0;
+    }
+
+    h1 {
+        font-size: 28px;
+        font-weight: 400;
+        margin-top: 2px;
+    }
+
+    h2 {
+        font-size: 20px;
+        color: $inactive-text;
+        margin-bottom: 82px;
+        margin-top: 3px;
+    }
+
+    h5 {
+        padding-top: 28px;
+        font-size: 22px;
+        margin-bottom: -10px;
+        opacity: 0;
+        transition: opacity 1.5s ease;
+
+        &.display,
+        &.featured {
+            opacity: 1;
+        }
+    }
+
+    h6 {
+        padding-top: 28px;
+        margin-bottom: -12px;
+        color: $inactive-text;
+        font-size: 18px;
+        opacity: 0;
+        transition: opacity 1.5s ease;
+
+        &.display,
+        &.featured {
+            opacity: 1;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        padding: 28px 0;
+        padding-right: 80px;
+        line-height: 2;
+        opacity: 0;
+        transition: opacity 1.5s ease;
+
+        &.display,
+        &.featured {
+            opacity: 1;
+        }
+    }
+
+    .featured * {
+        opacity: 1;
+    }
+
+    img {
+        width: 100%;
+        margin: 28px 0;
+        object-fit: cover;
+        opacity: 0;
+        padding-bottom: 160px;
+        padding-top: 120px;
+        transition: opacity 1.5s ease, padding-top 1.5s ease, padding-bottom 1.5s ease;
+
+        &.desktop {
+            display: inline;
+        }
+
+        &.mobile {
+            display: none;
+        }
+
+        &.display {
+            opacity: 1;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .imgs.featured img {
+        opacity: 1;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    hr {
+        margin: 28px 0;
+
+        &:nth-child(1) {
+            width: 100%;
+            margin: -16px auto 16px auto;
+            position: relative;
+        }
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .sidebar {
+        display: none;
+        position: absolute;
+    }
+
+    main {
+        display: block;
+        width: 100%;
+
+        .project {
+
+            &::before,
+            &::after {
+                width: calc(100% - 96px);
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            &::after {
+                margin: 28px auto;
+            }
+        }
+
+        h1,
+        h2,
+        h5,
+        h6,
+        p {
+            padding: 0 48px;
+        }
+
+        p {
+            padding: 28px 48px;
+        }
+
+        h6,
+        h5 {
+            padding-top: 28px;
+        }
+
+        h1 {
+            margin-top: 16px;
+        }
+
+        h2 {
+            margin-bottom: 68px;
+            margin-top: 5px;
+        }
+
+        hr {
+            width: calc(100% - 96px);
+            left: 0;
+            right: 0;
+            margin: 28px auto;
+        }
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .close {
+        margin: 33px 0 0 23px;
+    }
+
+    main {
+
+        .project {
+
+            &::before,
+            &::after {
+                width: calc(100% - 48px);
+
+            }
+
+            &::before {
+                top: -16px;
+            }
+        }
+
+        hr {
+            width: calc(100% - 48px);
+
+            &:nth-child(1) {
+                width: calc(100% - 48px);
+                margin: 64px auto 36px auto;
+            }
+        }
+
+        img {
+            &.desktop {
+                display: none;
+            }
+
+            &.mobile {
+                display: inline;
+            }
+        }
+
+        h1,
+        h2,
+        h5,
+        h6,
+        p {
+            padding: 0 24px;
+        }
+
+        p {
+            padding: 28px 24px;
+        }
+
+        h5 {
+            padding-top: 28px;
+        }
+
+        h6 {
+            padding-top: 28px;
+            margin-bottom: -8px;
+        }
+
+        h1 {
+            margin-top: 0px;
+        }
+
+        h2 {
+            margin-bottom: 66px;
+
+        }
+    }
+
+    #scroll-up {
+        bottom: 32px;
+        right: 24px;
+
+        &:active {
+            background: #eee;
+
+            & svg {
+                fill: $active-text;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 811px) {
+
+    .sidebar {
+        width: 33% !important;
+
+        .about {
+            font-size: 18px !important;
+        }
+
+        .top {
+            padding: 48px 24px !important;
+        }
+
+        footer {
+            padding: 48px 24px 40px 24px !important;
+        }
+    }
+
+    main {
+        width: 67% !important;
+
+        h2 {
+            margin-bottom: 76px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 887px) and (min-width: 811px) {
+    .sidebar {
+        .copyright {
+            font-size: 0.89em !important;
+            margin-top: 36px !important;
+        }
+    }
+}
