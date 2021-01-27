@@ -77,6 +77,10 @@ $(window).on("load", function () {
         window.onscroll = function () { scrollFunction() };
     }, 2000);
 
+    setTimeout(function () {
+        $(".link").css('pointer-events', 'initial');
+    }, 2500);
+
     if (saveScreen !== "main") {
         setTimeout(function () {
             getContent();
