@@ -117,13 +117,15 @@ main {
     h5 {
         padding-top: 28px;
         font-size: 22px;
-        margin-bottom: -10px;
+        margin-bottom: -16px;
         opacity: 0;
-        transition: opacity 1.5s ease;
+        transform: translateY(160px);
+        transition: opacity 2s ease, transform 1.5s ease;
 
         &.display,
         &.featured {
             opacity: 1;
+            transform: translateY(0);
         }
     }
 
@@ -131,13 +133,15 @@ main {
         padding-top: 28px;
         margin-bottom: -12px;
         color: $inactive-text;
-        font-size: 18px;
+        font-size: 16px;
         opacity: 0;
-        transition: opacity 1.5s ease;
+        transform: translateY(160px);
+        transition: opacity 2s ease, transform 1.5s ease;
 
         &.display,
         &.featured {
             opacity: 1;
+            transform: translateY(0);
         }
     }
 
@@ -147,16 +151,19 @@ main {
         padding-right: 80px;
         line-height: 2;
         opacity: 0;
-        transition: opacity 1.5s ease;
+        transform: translateY(160px);
+        transition: opacity 2s ease, transform 1.5s ease;
 
         &.display,
         &.featured {
             opacity: 1;
+            transform: translateY(0);
         }
     }
 
     .featured * {
         opacity: 1;
+        transform: translateY(0);
     }
 
     img {
@@ -164,9 +171,8 @@ main {
         margin: 28px 0;
         object-fit: cover;
         opacity: 0;
-        padding-bottom: 160px;
-        padding-top: 120px;
-        transition: opacity 1.5s ease, padding-top 1.5s ease, padding-bottom 1.5s ease;
+        transform: translateY(160px);
+        transition: opacity 3s ease, transform 1.5s ease;
 
         &.desktop {
             display: inline;
@@ -177,25 +183,31 @@ main {
         }
 
         &.display {
-            opacity: 1;
-            padding-top: 0;
-            padding-bottom: 0;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
     }
 
     .imgs.featured img {
-        opacity: 1;
-        padding-top: 0;
-        padding-bottom: 0;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 
     hr {
         margin: 28px 0;
+        opacity: 0;
+        transform: translateY(160px);
+        transition: opacity 2s ease, transform 1.5s ease;
 
         &:nth-child(1) {
             width: 100%;
             margin: -16px auto 16px auto;
             position: relative;
+        }
+
+        &.display {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 }

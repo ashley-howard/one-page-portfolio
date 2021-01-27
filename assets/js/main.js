@@ -6,6 +6,7 @@ var imgs = main.getElementsByTagName("img");
 var h6s = main.getElementsByTagName("h6");
 var h5s = main.getElementsByTagName("h5");
 var ps = main.getElementsByTagName("p");
+var hrs = main.getElementsByTagName("hr");
 
 function scrollFunction() {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -19,10 +20,11 @@ function scrollFunction() {
     getContent();
 }
 
-var fadeInPercent = 75;
+var fadeInPercent = 88;
 function getContent() {
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
+    // img
     for (var i = 0; i < imgs.length; i++) {
         var distance = 100 / (vh / imgs[i].getBoundingClientRect().top)
 
@@ -31,6 +33,7 @@ function getContent() {
         }
     }
 
+    // h6
     for (var i = 0; i < h6s.length; i++) {
         var distance = 100 / (vh / h6s[i].getBoundingClientRect().top)
 
@@ -39,6 +42,7 @@ function getContent() {
         }
     }
 
+    // h5
     for (var i = 0; i < h5s.length; i++) {
         var distance = 100 / (vh / h5s[i].getBoundingClientRect().top)
 
@@ -47,11 +51,21 @@ function getContent() {
         }
     }
 
+    // p
     for (var i = 0; i < ps.length; i++) {
         var distance = 100 / (vh / ps[i].getBoundingClientRect().top)
 
         if (distance < fadeInPercent) {
             ps[i].classList.add('display')
+        }
+    }
+
+    // hr
+    for (var i = 0; i < hrs.length; i++) {
+        var distance = 100 / (vh / hrs[i].getBoundingClientRect().top)
+
+        if (distance < fadeInPercent + 10) {
+            hrs[i].classList.add('display')
         }
     }
 }
@@ -150,6 +164,7 @@ function link(a, id) {
         $("h6").removeClass("display")
         $("h5").removeClass("display")
         $("p").removeClass("display")
+        $("hr").removeClass("display")
         $("#" + saveScreen).fadeIn(2000);
         getContent();
 
